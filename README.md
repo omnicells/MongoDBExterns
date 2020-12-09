@@ -62,8 +62,8 @@ class Main
 						trace('Created collection $collection on database $database');
 					}
 				});
-			trace('Connected to MongoDB server on $url');
-			client.close();
+				trace('Connected to MongoDB server on $url');
+				client.close();
 			}
 		});
 	}
