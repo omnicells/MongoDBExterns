@@ -48,24 +48,24 @@ class Main
 	public static var database = 'Database';
    	public static var collection = 'Collection';
 
-    	static function main() {
+	static function main() {
 		Mongodb.connect(url, function(error, client) {
 			if(error != null) {
-				trace('Failed to connect to $url'); 
+				trace('Could not connect to MongoDB server at $url');
 				Sys.exit(null); 
 			} else {
-				var db = client.db(database);
-				db.createCollection(collection, function(error, response) {
+			var db = client.db(database);
+			db.createCollection(collection, function(error, response) {
 				if (error != null) {
-					trace("Could not create collection"); 
+					trace('Could not create collection $collection');
 				} else {
-					trace('Created $collection on database $database')
+					trace('Created collection $collection on database $database');
 				}
-			}
 			});
-			trace('connected to MongoDB server at $url'); 
+			trace('Connected to MongoDB server on $url');
 			client.close();
-		}
+			}
 		});
+	}
 }
 ```
