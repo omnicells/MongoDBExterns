@@ -63,6 +63,15 @@ class Main
 						trace('$response');
 					}
 				});
+				//inserts one row with the column _id containing the value 1 and the column token containing the value 50 
+				db.collection(collection).insertOne({"_id":"1", "token":"50"}, function (error, response) {
+					if (error != null)
+					{
+						trace('$error');
+					} else {
+						trace('$response');
+					}
+				}); 
 				//finds and gets all fields of row with _id 1 
 				db.collection(collection).findOne({/*column name*/"_id":/*row value you want to find*/"1"}, function (error, user) {
 					if (error != null || user == null) {
