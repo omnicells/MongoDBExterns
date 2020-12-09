@@ -50,27 +50,43 @@ class Main
 
 	static function main() {
 		Mongodb.connect(url, function(error, client) {
-			if(error != null) {
+			if (error != null) {
 				trace('Could not connect to MongoDB server at $url');
 				Sys.exit(null); 
 			} else {
 				var db = client.db(database);
-				//create collection if it doesn't exist
+				//creates collection if it doesn't exist
 				db.createCollection(collection, function(error, response) {
 					if (error != null) {
-						trace('Could not create collection $collection');
+						trace('$error');
 					} else {
-						trace('Created collection $collection on database $database');
+						trace('$response');
 					}
 				});
-				//finds a document within a collection
-				db.collection(collection).findOne({/*column name*/"_id":/*row value you want to find*/record._id}, function (error, user) {
+				//finds and gets all fields of row with _id 1 
+				db.collection(collection).findOne({/*column name*/"_id":/*row value you want to find*/"1"}, function (error, user) {
 					if (error != null || user == null) {
-						client.close();
-						trace('could not find user');
+						trace('$error');
 					} else {
-						client.close();
-						trace('found $user');
+						trace('$response');
+					}
+				});
+				//updates token column in row with _id value 1 to 12345
+				db.collection(collection).updateOne({"_id":"1"}, {$set:{token:"12345"}}, function(error, response) {
+					if (error != null)
+					{
+						trace('$error');
+					} else {
+						trace('$response');
+					}
+				});
+				//deletes row that has the _id of 1
+				db.collection(collection).deleteOne({_id:"1"}, function (error, response) {
+					if (error != null)
+					{
+						trace('$error');
+					} else {
+						trace('$response');
 					}
 				});
 				trace('Connected to MongoDB server on $url');
