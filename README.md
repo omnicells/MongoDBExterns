@@ -40,3 +40,32 @@ Generated from **[@types/mongodb v3.5.34](https://github.com/DefinitelyTyped/Def
 - [TJT](https://github.com/Celend)
 - [Julien TASSIN](https://github.com/jtassin)
 - [Anna Henningsen](https://github.com/addaleax)
+## Usage
+```Haxe
+class Main
+{
+	public static var url = 'mongodb://127.0.0.1:27017';
+	public static var database = 'Database';
+   	public static var collection = 'Collection';
+
+    	static function main() {
+		Mongodb.connect(url, function(error, client) {
+			if(error != null) {
+				trace('Failed to connect to $url'); 
+				Sys.exit(null); 
+			} else {
+				var db = client.db(database);
+				db.createCollection(collection, function(error, response) {
+				if (error != null) {
+					trace("Could not create collection"); 
+				} else {
+					trace('Created $collection on database $database')
+				}
+			}
+			});
+			trace('connected to MongoDB server at $url'); 
+			client.close();
+		}
+		});
+}
+```
