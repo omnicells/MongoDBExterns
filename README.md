@@ -81,7 +81,7 @@ class Main
 					}
 				});
 				//deletes row that has the _id of 1
-				db.collection(collection).deleteOne({_id:"1"}, function (error, response) {
+				db.collection(collection).deleteOne({"_id":"1"}, function (error, response) {
 					if (error != null)
 					{
 						trace('$error');
