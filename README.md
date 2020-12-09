@@ -51,7 +51,7 @@ class Main
 	static function main() {
 		Mongodb.connect(url, function(error, client) {
 			if (error != null) {
-				trace('Could not connect to MongoDB server at $url');
+				trace('$error');
 				Sys.exit(null); 
 			} else {
 				var db = client.db(database);
