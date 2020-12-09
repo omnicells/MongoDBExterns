@@ -96,3 +96,13 @@ class Main
 	}
 }
 ```
+Hxml:
+```Haxe
+-D js-es=6
+-cp externs/MongoDBExterns
+-cp externs/node
+-cp externs/bson
+-main Main
+-lib hxnodejs
+-js Test.js
+```
