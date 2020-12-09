@@ -54,14 +54,14 @@ class Main
 				trace('Could not connect to MongoDB server at $url');
 				Sys.exit(null); 
 			} else {
-			var db = client.db(database);
-			db.createCollection(collection, function(error, response) {
-				if (error != null) {
-					trace('Could not create collection $collection');
-				} else {
-					trace('Created collection $collection on database $database');
-				}
-			});
+				var db = client.db(database);
+				db.createCollection(collection, function(error, response) {
+					if (error != null) {
+						trace('Could not create collection $collection');
+					} else {
+						trace('Created collection $collection on database $database');
+					}
+				});
 			trace('Connected to MongoDB server on $url');
 			client.close();
 			}
