@@ -55,11 +55,22 @@ class Main
 				Sys.exit(null); 
 			} else {
 				var db = client.db(database);
+				//create collection if it doesn't exist
 				db.createCollection(collection, function(error, response) {
 					if (error != null) {
 						trace('Could not create collection $collection');
 					} else {
 						trace('Created collection $collection on database $database');
+					}
+				});
+				//finds a document within a collection
+				db.collection(collection).findOne({/*column name*/"_id":/*row value you want to find*/record._id}, function (error, user) {
+					if (error != null || user == null) {
+						client.close();
+						trace('could not find user');
+					} else {
+						client.close();
+						trace('found $user');
 					}
 				});
 				trace('Connected to MongoDB server on $url');
