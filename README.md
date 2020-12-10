@@ -65,8 +65,7 @@ class Main
 				});
 				//inserts one row with the column _id containing the value 1 and the column token containing the value 50 
 				db.collection(collection).insertOne({"_id":"1", "token":"50"}, function (error, response) {
-					if (error != null)
-					{
+					if (error != null) {
 						trace('$error');
 					} else {
 						trace('$response');
@@ -82,8 +81,7 @@ class Main
 				});
 				//updates token column in row with _id value 1 to 12345
 				db.collection(collection).updateOne({"_id":"1"}, {$set:{token:"12345"}}, function(error, response) {
-					if (error != null)
-					{
+					if (error != null) {
 						trace('$error');
 					} else {
 						trace('$response');
@@ -91,8 +89,7 @@ class Main
 				});
 				//deletes row that has the _id of 1
 				db.collection(collection).deleteOne({"_id":"1"}, function (error, response) {
-					if (error != null)
-					{
+					if (error != null) {
 						trace('$error');
 					} else {
 						trace('$response');
